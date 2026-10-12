@@ -17,8 +17,8 @@ Repositorio con los documentos públicos (PDF y HTML) que Witec publica para sus
 Cada documento vive en su propia carpeta (nombres en minúsculas, sin espacios ni tildes, para que las URLs sean estables):
 
 - `politica-de-privacidad/` — Política de Privacidad
-- `declaracion-de-practicas-de-certificacion/` — Declaración de Prácticas de Certificación (DPC)
-- `contrato-prestacion-servicios-tipo-F3/` — Contrato de Prestación de Servicios tipo F3
+- `declaracion-de-practicas/` — Declaración de Prácticas de Certificación (DPC)
+- `contrato-servicios/` — Políticas de Certificación (F1 y F3)
 
 ## Cómo agregar o actualizar un documento
 
