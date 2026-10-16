@@ -20,6 +20,8 @@ Cada documento vive en su propia carpeta (nombres en minúsculas, sin espacios n
 - `declaracion-de-practicas/` — Declaración de Prácticas de Certificación (DPC)
 - `contrato-servicios/` — Políticas de Certificación (F1 y F3)
 
+La **CRL** (Lista de Certificados Revocados) no vive en este repo: la sección "Certificados" del `index.html` enlaza a `http://crl.witec.id/digiyosa-ca.crl`, que es la misma URL que va en el CRL Distribution Point de cada certificado. La publica michi-auth después de validarla contra el certificado de la CA (también publicado en `http://crl.witec.id/digiyosa-ca.cer`). No subas una copia del `.crl` acá: quedaría desactualizada con la siguiente revocación.
+
 ## Cómo agregar o actualizar un documento
 
 1. Colocá el archivo (PDF o HTML) dentro de la carpeta correspondiente (o creá una carpeta nueva con un nombre en minúsculas, sin espacios/tildes/caracteres especiales — eso evita problemas de encoding en las URLs).

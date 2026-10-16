@@ -116,6 +116,7 @@
   .doc-type {
     font-size: 0.78rem;
     color: var(--muted);
+    overflow-wrap: anywhere;
   }
   .doc-arrow { color: var(--indigo); font-weight: 700; }
   footer {
@@ -202,11 +203,21 @@
       <h2 class="section-title">Certificados</h2>
       <ul class="docs">
         <li>
-          <a class="doc-card" href="#" data-pending-url="certificado-digiyoysa">
-            <span class="icon-badge">URL</span>
+          <a class="doc-card" href="http://crl.witec.id/digiyosa-ca.cer">
+            <span class="icon-badge">CER</span>
             <span class="doc-info">
               <span class="doc-name">Certificado Digiyo S.A</span>
-              <span class="doc-type">Certificado Digital de Digiyo S.A</span>
+              <span class="doc-type">Certificado de la CA de Digiyo S.A. http://crl.witec.id/digiyosa-ca.cer</span>
+            </span>
+            <span class="doc-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a class="doc-card" href="http://crl.witec.id/digiyosa-ca.crl">
+            <span class="icon-badge">CRL</span>
+            <span class="doc-info">
+              <span class="doc-name">Lista de Certificados Revocados (CRL)</span>
+              <span class="doc-type">Certificados revocados por la CA de Digiyo S.A., firmada por la CA y actualizada con cada revocación. http://crl.witec.id/digiyosa-ca.crl</span>
             </span>
             <span class="doc-arrow">&rarr;</span>
           </a>
