@@ -3,241 +3,339 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Documentos Públicos - Witec</title>
+<title>Repositorio Público - WITEC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet">
 <style>
+  /* Paleta y tipografía tomadas de witec.id */
   :root {
     --navy: #181335;
-    --indigo: #4154F9;
-    --orange: #FF4F00;
-    --cream: #F6F5ED;
-    --peach: #FFF0E4;
-    --card: #F7F7FB;
-    --muted: #60584C;
-    --border: rgba(24,19,53,0.08);
+    --lilac: #4154F9;
+    --lilac-dark: #2E3FD8;
+    --lavender: #A6B3FF;
+    --lavender-text: #C9CFEE;
+    --gray-text: #565270;
+    --bg-subtle: #F7F7FB;
+    --border-subtle: #E5E4F0;
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    font-family: "DM Sans", "Opensans", Georgia, sans-serif;
-    color: var(--navy);
-    background: var(--cream);
-  }
-  h1, h2, .brand {
     font-family: Arimo, sans-serif;
-    font-weight: 700;
-  }
-  header {
-    background: var(--navy);
-    padding: 1.1rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .brand {
-    color: #ffffff;
-    font-size: 1.15rem;
-    letter-spacing: 0.02em;
-    text-decoration: none;
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-  }
-  .brand .tag {
-    font-family: "DM Sans", sans-serif;
-    font-weight: 400;
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.65);
-  }
-  .hero {
-    background: var(--peach);
-    padding: 3rem 1.5rem 2.5rem;
-    text-align: center;
-  }
-  .hero h1 {
-    margin: 0 0 0.6rem;
-    font-size: clamp(1.6rem, 4vw, 2.2rem);
-  }
-  .hero p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 1rem;
-    max-width: 34rem;
-    margin: 0 auto;
-  }
-  main {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 2.5rem 1.5rem 4rem;
-  }
-  h2.section-title {
-    font-size: 1.1rem;
-    margin: 0 0 1rem;
+    font-size: 16px;
+    line-height: 1.5;
     color: var(--navy);
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
   }
-  .doc-group { margin-bottom: 2.2rem; }
-  ul.docs { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.85rem; }
-  a.doc-card {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    padding: 1rem 1.15rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* Barra superior */
+  .nav { background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; padding-bottom: 20px; }
+  .nav-logo { display: flex; }
+  .nav-link { color: rgba(255,255,255,0.85); font-size: 15px; text-decoration: none; }
+  .nav-link:hover { color: #ffffff; }
+
+  /* Portada */
+  .hero {
+    background-color: var(--navy);
+    background-image:
+      radial-gradient(900px 500px at 60% -10%, rgba(65,84,249,0.28), transparent 70%),
+      radial-gradient(600px 400px at 5% 90%, rgba(7,132,234,0.15), transparent 70%);
+    padding: 72px 0 64px;
   }
-  a.doc-card:hover {
-    box-shadow: 0 6px 20px rgba(24,19,53,0.08);
-    transform: translateY(-1px);
-  }
-  .icon-badge {
-    flex: 0 0 auto;
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: var(--peach);
-    color: var(--orange);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .badge {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.08);
+    color: var(--lavender-text);
+    font-size: 13px;
     font-weight: 700;
-    font-size: 0.75rem;
   }
-  .doc-info { flex: 1 1 auto; min-width: 0; }
-  .doc-name {
-    font-weight: 600;
-    display: block;
+  .hero h1 { color: #ffffff; font-size: clamp(32px, 6vw, 48px); line-height: 1.15; margin: 20px 0 14px; }
+  .hero p { color: var(--lavender-text); font-size: 17px; line-height: 1.55; margin: 0; max-width: 600px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 10px; margin: 32px 0 0; padding: 0; list-style: none; }
+  .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   }
-  .doc-type {
-    font-size: 0.78rem;
-    color: var(--muted);
-    overflow-wrap: anywhere;
+  .btn-primary { background: var(--lilac); color: #ffffff; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(65,84,249,0.35); }
+  .btn-secondary { color: #ffffff; border: 1.5px solid rgba(255,255,255,0.3); }
+  .btn-secondary:hover { transform: translateY(-2px); }
+
+  /* Secciones */
+  section { padding: 56px 0 0; scroll-margin-top: 16px; }
+  .eyebrow { color: var(--lilac); font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; margin: 0 0 8px; }
+  h2 { font-size: 26px; line-height: 1.2; margin: 0 0 8px; }
+  .lead { color: var(--gray-text); margin: 0 0 20px; }
+
+  ul.docs { list-style: none; margin: 0; padding: 4px 24px; background: var(--bg-subtle); border-radius: 16px; }
+  ul.docs li + li { border-top: 1px solid var(--border-subtle); }
+  ul.docs a, ul.docs .row {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding: 16px 0; color: inherit; text-decoration: none;
   }
-  .doc-arrow { color: var(--indigo); font-weight: 700; }
-  footer {
-    text-align: center;
-    padding: 2rem 1.5rem 2.5rem;
-    color: var(--muted);
-    font-size: 0.8rem;
+  .name { font-weight: 700; }
+  ul.docs a:hover .name { color: var(--lilac); }
+  .desc { display: block; font-size: 14.5px; color: var(--gray-text); }
+  .meta {
+    flex: 0 0 auto; font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+    padding: 4px 10px; border-radius: 6px; background: #ffffff; color: var(--lilac); border: 1px solid var(--border-subtle);
   }
-  footer a { color: var(--indigo); text-decoration: none; }
+  .pending .name { color: var(--gray-text); font-weight: 400; }
+  .pending .meta { color: var(--gray-text); background: transparent; font-weight: 400; }
+
+  /* Referencia normativa discreta: útil para auditoría, invisible para el usuario común */
+  .ref { font-size: 11px; color: var(--gray-text); opacity: 0.6; margin-left: 6px; font-weight: 400; }
+
+  /* Contacto, con el estilo de las tarjetas oscuras de witec.id */
+  .contact {
+    background: var(--navy); color: var(--lavender-text);
+    border-radius: 16px; padding: 28px; font-size: 15px;
+  }
+  .contact strong { color: #ffffff; font-size: 18px; }
+  .contact p { margin: 4px 0; }
+  .contact a { color: var(--lavender); }
+
+  /* Pie de página igual al de witec.id */
+  footer { background: var(--navy); margin-top: 72px; padding: 64px 0 40px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 40px; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
+  .footer-cols { display: flex; gap: 72px; }
+  .footer-col { display: flex; flex-direction: column; gap: 12px; }
+  .footer-h { color: #ffffff; font-size: 14px; font-weight: 700; }
+  .footer-link { color: var(--lavender-text); font-size: 14px; text-decoration: none; }
+  .footer-link:hover { color: #ffffff; }
+  .footer-divider { height: 1px; background: rgba(255,255,255,0.12); }
+  .footer-legal { color: rgba(201,207,238,0.7); font-size: 13px; }
+
+  @media (max-width: 760px) {
+    .footer-top { flex-direction: column; }
+    .footer-cols { gap: 40px; flex-wrap: wrap; }
+  }
+  @media (max-width: 560px) {
+    ul.docs { padding: 4px 16px; }
+    .hero { padding: 48px 0 44px; }
+  }
 </style>
 </head>
 <body>
-  <header>
-    <a class="brand" href="https://www.witec.id" target="_blank" rel="noopener">
-      WITEC <span class="tag">repositorio público</span>
-    </a>
-  </header>
 
-  <section class="hero">
-    <h1>Documentos Públicos</h1>
-    <p>Políticas, términos y certificados que publicamos para nuestros clientes y usuarios, con control de versiones.</p>
-  </section>
+  <div class="nav">
+    <div class="wrap">
+      <a class="nav-logo" href="https://www.witec.id" target="_blank" rel="noopener" aria-label="WITEC"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 134 28" height="28" width="134"><g fill="#ffffff"><g transform="translate(46.49,0.99)"><path d="M3.99941 25.9744 L0.603908 25.9744 C0.270444 25.9744 0 25.7034 0 25.369 L0 0.60543 C0 0.27097 0.270444 0 0.603908 0 L3.99941 0 C4.33281 0 4.60297 0.27097 4.60297 0.60543 L4.60297 25.369 C4.60297 25.7034 4.33281 25.9744 3.99941 25.9744 Z"></path></g><g transform="translate(1.89,0.99)"><path d="M33.294 0.42077 L27.1531 19.5357 L21.4765 0.43365 C21.3999 0.17633 21.1641 0 20.8964 0 L17.1322 0 C16.8695 0 16.6366 0.17003 16.5562 0.42077 L10.4159 19.5357 L4.73849 0.43365 C4.66193 0.17633 4.4261 0 4.15838 0 L0.605775 0 C0.200704 0 -0.0901874 0.3913 0.0256668 0.78036 L6.69489 23.2211 C7.17987 24.8533 8.64605 25.9629 10.3447 25.9809 C10.3592 25.9818 10.3737 25.9818 10.3886 25.9818 C12.0683 25.9818 13.5385 24.9096 14.0543 23.302 L18.9384 8.09949 L23.432 23.2211 C23.917 24.8533 25.3841 25.9629 27.0819 25.9809 C27.0972 25.9818 27.1114 25.9818 27.1258 25.9818 C28.8063 25.9818 30.2757 24.9096 30.7923 23.302 L38.0237 0.79324 C38.1496 0.40138 37.8582 0 37.4476 0 L33.8702 0 C33.6075 0 33.3746 0.17003 33.294 0.42077 Z"></path></g><g transform="translate(57.58,1.01)"><path d="M21.6663 0 L0.603627 0 C0.270163 0 0 0.27097 0 0.60543 L0 4.01135 C0 4.34574 0.270163 4.61671 0.603627 4.61671 L8.8336 4.61671 L8.8336 25.3548 C8.8336 25.6892 9.10376 25.9602 9.43716 25.9602 L12.8327 25.9602 C13.1661 25.9602 13.4366 25.6892 13.4366 25.3548 L13.4366 4.61671 L21.6663 4.61671 C21.9997 4.61671 22.2701 4.34574 22.2701 4.01135 L22.2701 0.60543 C22.2701 0.27097 21.9997 0 21.6663 0 Z"></path></g><g transform="translate(86.35,1.01)"><path d="M18.7121 4.61671 L0.603836 4.61671 C0.270441 4.61671 0 4.34546 0 4.01135 L0 0.60543 C0 0.27097 0.270441 0 0.603836 0 L18.7121 0 C19.0455 0 19.3159 0.27097 19.3159 0.60543 L19.3159 4.01135 C19.3159 4.34546 19.0455 4.61671 18.7121 4.61671 Z"></path></g><g transform="translate(112.29,1.01)"><path d="M19.2186 26.008 L7.44559 26.008 C3.33361 26.008 0 22.6645 0 18.5402 L0 7.46788 C0 3.34334 3.33333 0 7.44559 0 L19.2186 0 C19.552 0 19.8222 0.27097 19.8222 0.60543 L19.8222 4.01135 C19.8222 4.34574 19.552 4.61671 19.2186 4.61671 L7.44559 4.61671 C5.87584 4.61671 4.60297 5.89316 4.60297 7.46788 L4.60297 18.5402 C4.60297 20.1149 5.87584 21.3913 7.44559 21.3913 L19.2186 21.3913 C19.552 21.3913 19.8222 21.6623 19.8222 21.9967 L19.8222 25.4027 C19.8222 25.737 19.552 26.008 19.2186 26.008 Z"></path></g><g transform="translate(86.35,11.72)"><path d="M19.3118 14.5783 C19.3118 14.9127 19.0417 15.184 18.7083 15.184 L6.40534 15.184 C2.87346 15.184 0 11.7961 0 8.2537 L0 2.74008 C0 1.22661 1.22302 0 2.73199 0 L18.7083 0 C19.0417 0 19.3118 0.27125 19.3118 0.60564 L19.3118 4.01128 C19.3118 4.34574 19.0417 4.61671 18.7083 4.61671 L4.60297 4.61671 L4.60297 7.85666 C4.60297 8.855 5.40997 9.66434 6.40534 9.66434 L18.7083 9.66434 C19.0417 9.66434 19.3118 9.93531 19.3118 10.2698 L19.3118 14.5783 Z"></path></g></g></svg></a>
+      <a class="nav-link" href="#contacto">Contacto</a>
+    </div>
+  </div>
 
-  <main>
-    <div class="doc-group">
-      <h2 class="section-title">Política de Privacidad</h2>
-      <ul class="docs">
-        <li>
-          <a class="doc-card" href="politica-de-privacidad/POLITICA-DE-PRIVACIDAD-DOC-PP-V1.0.pdf">
-            <span class="icon-badge">PDF</span>
-            <span class="doc-info">
-              <span class="doc-name">Política de Privacidad</span>
-              <span class="doc-type">La política define el marco de protección de datos personales aplicado por DIGIYO S.A. en sus servicios cualificados de confianza.</span>
-            </span>
-            <span class="doc-arrow">&rarr;</span>
-          </a>
-        </li>
+  <div class="hero">
+    <div class="wrap">
+      <span class="badge">Repositorio público · DigiYo S.A.</span>
+      <h1>Todo sobre tu firma electrónica, en un solo lugar</h1>
+      <p>Las reglas del servicio, nuestros certificados, dónde tramitar tu firma y cómo contactarnos.</p>
+      <ul class="ctas">
+        <li><a class="btn btn-primary" href="#tramitar">Quiero mi firma</a></li>
+        <li><a class="btn btn-secondary" href="#verificar">Verificar un certificado</a></li>
+        <li><a class="btn btn-secondary" href="#documentos">Leer el contrato</a></li>
       </ul>
     </div>
+  </div>
 
-    <div class="doc-group">
-      <h2 class="section-title">Declaración de Prácticas de Certificación</h2>
-      <ul class="docs">
-        <li>
-          <a class="doc-card" href="declaracion-de-practicas/declaracion-practicas-certificacion.pdf">
-            <span class="icon-badge">PDF</span>
-            <span class="doc-info">
-              <span class="doc-name">Declaración de Prácticas de Certificación</span>
-              <span class="doc-type">Declaración de prácticas de certificación de Digiyo S.A</span>
-            </span>
-            <span class="doc-arrow">&rarr;</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+  <main class="wrap">
 
-    <div class="doc-group">
-      <h2 class="section-title">Contratos de prestación de servicios de confianza</h2>
+    <!-- 2.2 a, f + política de privacidad -->
+    <section id="documentos">
+      <p class="eyebrow">Documentos</p>
+      <h2>Reglas del servicio</h2>
+      <p class="lead">Qué te ofrecemos, cómo trabajamos y qué firmás al contratar.</p>
       <ul class="docs">
-        <li>
-          <a class="doc-card" href="contrato-servicios/politica-de-certificacion-f1.pdf">
-            <span class="icon-badge">PDF</span>
-            <span class="doc-info">
-              <span class="doc-name">Política de Certificación F1</span>
-              <span class="doc-type">Política de certificación del certificado cualificado tributario.</span>
-            </span>
-            <span class="doc-arrow">&rarr;</span>
-          </a>
-        </li>
-        <li>
-          <a class="doc-card" href="contrato-servicios/politica-de-certificacion-f3.pdf">
-            <span class="icon-badge">PDF</span>
-            <span class="doc-info">
-              <span class="doc-name">Política de Certificación F3</span>
-              <span class="doc-type">Política de certificación del prestador cualificado de servicios de confianza de la ICPP.</span>
-            </span>
-            <span class="doc-arrow">&rarr;</span>
-          </a>
-        </li>
+        <li><a href="contrato-servicios/politica-de-certificacion-f1.pdf">
+          <span><span class="name">Política de Certificación – Tipo F1</span><span class="ref">2.2 a</span>
+          <span class="desc">Reglas del certificado cualificado tributario.</span></span>
+          <span class="meta">PDF</span></a></li>
+        <li><a href="contrato-servicios/politica-de-certificacion-f3.pdf">
+          <span><span class="name">Política de Certificación – Tipo F3</span><span class="ref">2.2 a</span>
+          <span class="desc">Reglas del certificado cualificado de la ICPP.</span></span>
+          <span class="meta">PDF</span></a></li>
+        <li><a href="declaracion-de-practicas/declaracion-practicas-certificacion.pdf">
+          <span><span class="name">Declaración de Prácticas de Certificación</span><span class="ref">2.2 a</span>
+          <span class="desc">Cómo emitimos, renovamos y revocamos certificados.</span></span>
+          <span class="meta">PDF</span></a></li>
+        <li class="pending"><div class="row">
+          <span><span class="name">Contrato de prestación de servicios (modelo)</span><span class="ref">2.2 f</span>
+          <span class="desc">Tus derechos y obligaciones al obtener un certificado.</span></span>
+          <span class="meta">Próximamente</span></div></li>
+        <li><a href="politica-de-privacidad/POLITICA-DE-PRIVACIDAD-DOC-PP-V1.0.pdf">
+          <span><span class="name">Política de Privacidad</span>
+          <span class="desc">Cómo protegemos tus datos personales.</span></span>
+          <span class="meta">PDF</span></a></li>
       </ul>
-    </div>
+    </section>
 
-    <div class="doc-group">
-      <h2 class="section-title">Certificados</h2>
+    <!-- 2.2 b, c, d, e -->
+    <section id="verificar">
+      <p class="eyebrow">Certificados</p>
+      <h2>Verificar un certificado</h2>
+      <p class="lead">Para comprobar que una firma es válida y que el certificado no fue revocado.</p>
       <ul class="docs">
-        <li>
-          <a class="doc-card" href="https://crl.witec.id/digiyosa-ca.cer">
-            <span class="icon-badge">CER</span>
-            <span class="doc-info">
-              <span class="doc-name">Certificado Digiyo S.A</span>
-              <span class="doc-type">Certificado de la CA de Digiyo S.A. http://crl.witec.id/digiyosa-ca.cer</span>
-            </span>
-            <span class="doc-arrow">&rarr;</span>
-          </a>
-        </li>
-        <li>
-          <a class="doc-card" href="https://crl.witec.id/digiyosa-ca.crl">
-            <span class="icon-badge">CRL</span>
-            <span class="doc-info">
-              <span class="doc-name">Lista de Certificados Revocados (CRL)</span>
-              <span class="doc-type">Certificados revocados por la CA de Digiyo S.A., firmada por la CA y actualizada con cada revocación. http://crl.witec.id/digiyosa-ca.crl</span>
-            </span>
-            <span class="doc-arrow">&rarr;</span>
-          </a>
-        </li>
-        <li>
-          <a class="doc-card" href="#" data-pending-url="certificado-ac-raiz-mic">
-            <span class="icon-badge">CRT</span>
-            <span class="doc-info">
-              <span class="doc-name">Certificado de AC Raíz M.I.C.</span>
-              <span class="doc-type">Certificado de la Autoridad Certificadora Raíz del Ministerio de Industria y Comercio.</span>
-            </span>
-            <span class="doc-arrow">&rarr;</span>
-          </a>
-        </li>
+        <li class="pending"><div class="row">
+          <span><span class="name">Certificado de la AC Raíz-Py</span><span class="ref">2.2 b</span>
+          <span class="desc">La autoridad del Estado que respalda a todos los prestadores.</span></span>
+          <span class="meta">Próximamente</span></div></li>
+        <li><a href="https://crl.witec.id/digiyosa-ca.cer">
+          <span><span class="name">Certificado de DigiYo</span><span class="ref">2.2 c</span>
+          <span class="desc">Nuestro certificado como prestador.</span></span>
+          <span class="meta">CER</span></a></li>
+        <li><a href="https://crl.witec.id/digiyosa-ca.crl">
+          <span><span class="name">Lista de certificados revocados (LCR)</span><span class="ref">2.2 d</span>
+          <span class="desc">Certificados que ya no son válidos. Se actualiza con cada revocación.</span></span>
+          <span class="meta">CRL</span></a></li>
+        <li class="pending"><div class="row">
+          <span><span class="name">Consultar certificados emitidos</span><span class="ref">2.2 e</span>
+          <span class="desc">Buscá un certificado emitido por DigiYo.</span></span>
+          <span class="meta">Próximamente</span></div></li>
       </ul>
-    </div>
+    </section>
+
+    <!-- 2.2 j, k, l -->
+    <section id="tramitar">
+      <p class="eyebrow">Atención</p>
+      <h2>Dónde tramitar tu firma</h2>
+      <p class="lead">Las Autoridades de Registro (AR) verifican tu identidad para emitir tu certificado.</p>
+      <ul class="docs">
+        <li class="pending"><div class="row">
+          <span><span class="name">Autoridades de Registro y direcciones</span><span class="ref">2.2 j</span>
+          <span class="desc">Oficinas propias y delegadas donde podés hacer el trámite.</span></span>
+          <span class="meta">Próximamente</span></div></li>
+        <li class="pending"><div class="row">
+          <span><span class="name">Acuerdos con AR delegadas</span><span class="ref">2.2 k</span>
+          <span class="desc">Convenios firmados con cada AR delegada.</span></span>
+          <span class="meta">Próximamente</span></div></li>
+        <li class="pending"><div class="row">
+          <span><span class="name">AR dadas de baja</span><span class="ref">2.2 l</span>
+          <span class="desc">AR que ya no están habilitadas y desde qué fecha.</span></span>
+          <span class="meta">Próximamente</span></div></li>
+      </ul>
+    </section>
+
+    <!-- 2.2 m, n, o, p, q -->
+    <section id="validacion">
+      <p class="eyebrow">Red de confianza</p>
+      <h2>Validación y proveedores</h2>
+      <p class="lead">Autoridades de Validación (AV) y proveedores que trabajan con nosotros.</p>
+      <ul class="docs">
+        <li class="pending"><div class="row">
+          <span><span class="name">Autoridades de Validación y direcciones</span><span class="ref">2.2 m, n</span>
+          <span class="desc">AV habilitadas y dónde están sus instalaciones.</span></span>
+          <span class="meta">Próximamente</span></div></li>
+        <li class="pending"><div class="row">
+          <span><span class="name">Acuerdos con AV delegadas</span><span class="ref">2.2 o</span>
+          <span class="desc">Convenios firmados con cada AV delegada.</span></span>
+          <span class="meta">Próximamente</span></div></li>
+        <li class="pending"><div class="row">
+          <span><span class="name">AV dadas de baja</span><span class="ref">2.2 p</span>
+          <span class="desc">AV que ya no están habilitadas y desde qué fecha.</span></span>
+          <span class="meta">Próximamente</span></div></li>
+        <li class="pending"><div class="row">
+          <span><span class="name">Proveedores de servicios de soporte (PSS)</span><span class="ref">2.2 q</span>
+          <span class="desc">Empresas que nos prestan servicios técnicos vinculados.</span></span>
+          <span class="meta">Próximamente</span></div></li>
+      </ul>
+    </section>
+
+    <section id="sello">
+      <p class="eyebrow">Servicio</p>
+      <h2>Sello de tiempo</h2>
+      <p class="lead">Demuestra que un documento existía en una fecha y hora y que no cambió después.</p>
+      <ul class="docs">
+        <li class="pending"><div class="row"><span><span class="name">Certificado del sello de tiempo</span></span><span class="meta">Próximamente</span></div></li>
+        <li class="pending"><div class="row"><span><span class="name">Política y Declaración de Prácticas</span></span><span class="meta">Próximamente</span></div></li>
+        <li class="pending"><div class="row"><span><span class="name">Contrato del servicio</span></span><span class="meta">Próximamente</span></div></li>
+        <li class="pending"><div class="row"><span><span class="name">Resolución de habilitación</span></span><span class="meta">Próximamente</span></div></li>
+        <li class="pending"><div class="row"><span><span class="name">Sellos emitidos</span></span><span class="meta">Próximamente</span></div></li>
+      </ul>
+    </section>
+
+    <!-- 2.2 g, h -->
+    <section id="normativa">
+      <p class="eyebrow">Normativa</p>
+      <h2>Marco legal</h2>
+      <p class="lead">Resoluciones que nos habilitan y normas que regulan la firma electrónica en Paraguay.</p>
+      <ul class="docs">
+        <li class="pending"><div class="row">
+          <span><span class="name">Resoluciones de habilitación de DigiYo</span><span class="ref">2.2 g</span>
+          <span class="desc">Resoluciones del MIC que nos autorizan como prestador.</span></span>
+          <span class="meta">Próximamente</span></div></li>
+        <li class="pending"><div class="row">
+          <span><span class="name">Leyes y normas de la ICPP</span><span class="ref">2.2 h</span>
+          <span class="desc">Leyes, decretos, reglamentos y resoluciones vigentes.</span></span>
+          <span class="meta">Próximamente</span></div></li>
+      </ul>
+    </section>
+
+    <section id="ayuda">
+      <p class="eyebrow">Ayuda</p>
+      <h2>Manuales y descargas</h2>
+      <p class="lead">Guías paso a paso y programas para usar tu certificado.</p>
+      <ul class="docs">
+        <li class="pending"><div class="row"><span><span class="name">Manuales de uso</span></span><span class="meta">Próximamente</span></div></li>
+      </ul>
+    </section>
+
+    <!-- 2.2 i -->
+    <section id="contacto">
+      <p class="eyebrow">Contacto <span class="ref">2.2 i</span></p>
+      <h2>¿Necesitás ayuda?</h2>
+      <div class="contact">
+        <p><strong>DIGIYO S.A.</strong></p>
+        <p>RUC 80140723-0</p>
+        <p>Av. Gral. José Gervasio Artigas 2025, Asunción 001429</p>
+        <p><a href="mailto:contacto@witec.id">contacto@witec.id</a></p>
+        <p>Lunes a viernes de 08:00 a 18:00 hs</p>
+      </div>
+    </section>
+
   </main>
 
   <footer>
-    Publicado por <a href="https://www.witec.id" target="_blank" rel="noopener">Witec</a> desde su repositorio público.
+    <div class="footer-inner">
+      <div class="footer-top">
+        <a href="https://www.witec.id" aria-label="WITEC"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 134 28" height="28" width="134"><g fill="#ffffff"><g transform="translate(46.49,0.99)"><path d="M3.99941 25.9744 L0.603908 25.9744 C0.270444 25.9744 0 25.7034 0 25.369 L0 0.60543 C0 0.27097 0.270444 0 0.603908 0 L3.99941 0 C4.33281 0 4.60297 0.27097 4.60297 0.60543 L4.60297 25.369 C4.60297 25.7034 4.33281 25.9744 3.99941 25.9744 Z"></path></g><g transform="translate(1.89,0.99)"><path d="M33.294 0.42077 L27.1531 19.5357 L21.4765 0.43365 C21.3999 0.17633 21.1641 0 20.8964 0 L17.1322 0 C16.8695 0 16.6366 0.17003 16.5562 0.42077 L10.4159 19.5357 L4.73849 0.43365 C4.66193 0.17633 4.4261 0 4.15838 0 L0.605775 0 C0.200704 0 -0.0901874 0.3913 0.0256668 0.78036 L6.69489 23.2211 C7.17987 24.8533 8.64605 25.9629 10.3447 25.9809 C10.3592 25.9818 10.3737 25.9818 10.3886 25.9818 C12.0683 25.9818 13.5385 24.9096 14.0543 23.302 L18.9384 8.09949 L23.432 23.2211 C23.917 24.8533 25.3841 25.9629 27.0819 25.9809 C27.0972 25.9818 27.1114 25.9818 27.1258 25.9818 C28.8063 25.9818 30.2757 24.9096 30.7923 23.302 L38.0237 0.79324 C38.1496 0.40138 37.8582 0 37.4476 0 L33.8702 0 C33.6075 0 33.3746 0.17003 33.294 0.42077 Z"></path></g><g transform="translate(57.58,1.01)"><path d="M21.6663 0 L0.603627 0 C0.270163 0 0 0.27097 0 0.60543 L0 4.01135 C0 4.34574 0.270163 4.61671 0.603627 4.61671 L8.8336 4.61671 L8.8336 25.3548 C8.8336 25.6892 9.10376 25.9602 9.43716 25.9602 L12.8327 25.9602 C13.1661 25.9602 13.4366 25.6892 13.4366 25.3548 L13.4366 4.61671 L21.6663 4.61671 C21.9997 4.61671 22.2701 4.34574 22.2701 4.01135 L22.2701 0.60543 C22.2701 0.27097 21.9997 0 21.6663 0 Z"></path></g><g transform="translate(86.35,1.01)"><path d="M18.7121 4.61671 L0.603836 4.61671 C0.270441 4.61671 0 4.34546 0 4.01135 L0 0.60543 C0 0.27097 0.270441 0 0.603836 0 L18.7121 0 C19.0455 0 19.3159 0.27097 19.3159 0.60543 L19.3159 4.01135 C19.3159 4.34546 19.0455 4.61671 18.7121 4.61671 Z"></path></g><g transform="translate(112.29,1.01)"><path d="M19.2186 26.008 L7.44559 26.008 C3.33361 26.008 0 22.6645 0 18.5402 L0 7.46788 C0 3.34334 3.33333 0 7.44559 0 L19.2186 0 C19.552 0 19.8222 0.27097 19.8222 0.60543 L19.8222 4.01135 C19.8222 4.34574 19.552 4.61671 19.2186 4.61671 L7.44559 4.61671 C5.87584 4.61671 4.60297 5.89316 4.60297 7.46788 L4.60297 18.5402 C4.60297 20.1149 5.87584 21.3913 7.44559 21.3913 L19.2186 21.3913 C19.552 21.3913 19.8222 21.6623 19.8222 21.9967 L19.8222 25.4027 C19.8222 25.737 19.552 26.008 19.2186 26.008 Z"></path></g><g transform="translate(86.35,11.72)"><path d="M19.3118 14.5783 C19.3118 14.9127 19.0417 15.184 18.7083 15.184 L6.40534 15.184 C2.87346 15.184 0 11.7961 0 8.2537 L0 2.74008 C0 1.22661 1.22302 0 2.73199 0 L18.7083 0 C19.0417 0 19.3118 0.27125 19.3118 0.60564 L19.3118 4.01128 C19.3118 4.34574 19.0417 4.61671 18.7083 4.61671 L4.60297 4.61671 L4.60297 7.85666 C4.60297 8.855 5.40997 9.66434 6.40534 9.66434 L18.7083 9.66434 C19.0417 9.66434 19.3118 9.93531 19.3118 10.2698 L19.3118 14.5783 Z"></path></g></g></svg></a>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <div class="footer-h">Productos</div>
+            <a class="footer-link" href="https://www.witec.id/identia">identIA</a>
+            <a class="footer-link" href="https://www.witec.id/firmo-yo">firmoYo</a>
+            <a class="footer-link" href="https://www.witec.id/certificados">Certificados</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-h">Empresa</div>
+            <a class="footer-link" href="https://www.witec.id/quienes-somos">Quiénes somos</a>
+            <a class="footer-link" href="https://www.witec.id/blog">Blog</a>
+            <a class="footer-link" href="https://www.witec.id/oportunidades">Oportunidades</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-h">Soporte</div>
+            <a class="footer-link" href="https://www.witec.id/contacto">Contacto</a>
+            <a class="footer-link" href="https://www.witec.id/preguntas-frecuentes">Preguntas frecuentes</a>
+            <a class="footer-link" href="https://www.witec.id/documentacion-legal">Documentación legal</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-legal">© 2026 WITEC · Una empresa del ecosistema Grupo Atom · Asunción, Paraguay</div>
+    </div>
   </footer>
+
 </body>
 </html>
