@@ -31,12 +31,38 @@
   }
   .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
-  /* Barra superior */
-  .nav { background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .nav .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; padding-bottom: 20px; }
-  .nav-logo { display: flex; }
-  .nav-link { color: rgba(255,255,255,0.85); font-size: 15px; text-decoration: none; }
-  .nav-link:hover { color: #ffffff; }
+  /* Barra superior igual a la de witec.id */
+  .w26-nav { background-color: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .w26-nav-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 20px 24px; }
+  .w26-nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .w26-nav-links { display: flex; align-items: center; gap: 32px; }
+  .w26-nav-link { color: rgba(255,255,255,0.85); font-size: 15px; text-decoration: none; }
+  .w26-nav-link:hover { color: #ffffff; }
+  .w26-nav-ctas { display: flex; align-items: center; gap: 20px; }
+  .w26-nav-btn { color: #ffffff; background-color: var(--lilac); border-radius: 10px; padding: 12px 22px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background .3s; }
+  .w26-nav-btn:hover { background: var(--lilac-dark); }
+  .w26-nav-burger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 44px; height: 44px; border-radius: 10px; cursor: pointer; background: none; border: 0; padding: 0; }
+  .w26-nav-burger-bar { display: block; width: 22px; height: 2px; border-radius: 2px; background-color: #ffffff; transition: transform .3s ease, opacity .3s ease; }
+  .w26-nav-mobile { display: none; background-color: var(--navy); border-top: 1px solid rgba(255,255,255,0.08); }
+  .w26-nav-mobile-inner { display: flex; flex-direction: column; padding: 10px 24px 24px; }
+  .w26-nav-mlink { color: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 14px 4px; font-size: 17px; font-weight: 700; text-decoration: none; transition: color .25s; }
+  .w26-nav-mlink:hover { color: #ffffff; }
+  .w26-nav-mbtn { color: #ffffff; text-align: center; background-color: var(--lilac); border-radius: 10px; margin-top: 16px; padding: 14px; font-size: 16px; font-weight: 700; text-decoration: none; transition: background .3s; }
+  .w26-nav-mbtn:hover { background: #2f3fd4; }
+  @keyframes w26navslide { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+  .w26-nav-open .w26-nav-mobile { display: block; animation: w26navslide .3s ease; }
+  .w26-nav-open .w26-nav-burger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .w26-nav-open .w26-nav-burger-bar:nth-child(2) { opacity: 0; }
+  .w26-nav-open .w26-nav-burger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  @media (max-width: 991px) {
+    .w26-nav-links, .w26-nav-ctas { display: none; }
+    .w26-nav-burger { display: flex; }
+  }
+  @media (min-width: 992px) { .w26-nav-open .w26-nav-mobile { display: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .w26-nav-open .w26-nav-mobile { animation: none; }
+    .w26-nav-burger-bar { transition: none; }
+  }
 
   /* Portada */
   .hero {
@@ -129,12 +155,40 @@
 </head>
 <body>
 
-  <div class="nav">
-    <div class="wrap">
-      <a class="nav-logo" href="https://www.witec.id" target="_blank" rel="noopener" aria-label="WITEC"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 134 28" height="28" width="134"><g fill="#ffffff"><g transform="translate(46.49,0.99)"><path d="M3.99941 25.9744 L0.603908 25.9744 C0.270444 25.9744 0 25.7034 0 25.369 L0 0.60543 C0 0.27097 0.270444 0 0.603908 0 L3.99941 0 C4.33281 0 4.60297 0.27097 4.60297 0.60543 L4.60297 25.369 C4.60297 25.7034 4.33281 25.9744 3.99941 25.9744 Z"></path></g><g transform="translate(1.89,0.99)"><path d="M33.294 0.42077 L27.1531 19.5357 L21.4765 0.43365 C21.3999 0.17633 21.1641 0 20.8964 0 L17.1322 0 C16.8695 0 16.6366 0.17003 16.5562 0.42077 L10.4159 19.5357 L4.73849 0.43365 C4.66193 0.17633 4.4261 0 4.15838 0 L0.605775 0 C0.200704 0 -0.0901874 0.3913 0.0256668 0.78036 L6.69489 23.2211 C7.17987 24.8533 8.64605 25.9629 10.3447 25.9809 C10.3592 25.9818 10.3737 25.9818 10.3886 25.9818 C12.0683 25.9818 13.5385 24.9096 14.0543 23.302 L18.9384 8.09949 L23.432 23.2211 C23.917 24.8533 25.3841 25.9629 27.0819 25.9809 C27.0972 25.9818 27.1114 25.9818 27.1258 25.9818 C28.8063 25.9818 30.2757 24.9096 30.7923 23.302 L38.0237 0.79324 C38.1496 0.40138 37.8582 0 37.4476 0 L33.8702 0 C33.6075 0 33.3746 0.17003 33.294 0.42077 Z"></path></g><g transform="translate(57.58,1.01)"><path d="M21.6663 0 L0.603627 0 C0.270163 0 0 0.27097 0 0.60543 L0 4.01135 C0 4.34574 0.270163 4.61671 0.603627 4.61671 L8.8336 4.61671 L8.8336 25.3548 C8.8336 25.6892 9.10376 25.9602 9.43716 25.9602 L12.8327 25.9602 C13.1661 25.9602 13.4366 25.6892 13.4366 25.3548 L13.4366 4.61671 L21.6663 4.61671 C21.9997 4.61671 22.2701 4.34574 22.2701 4.01135 L22.2701 0.60543 C22.2701 0.27097 21.9997 0 21.6663 0 Z"></path></g><g transform="translate(86.35,1.01)"><path d="M18.7121 4.61671 L0.603836 4.61671 C0.270441 4.61671 0 4.34546 0 4.01135 L0 0.60543 C0 0.27097 0.270441 0 0.603836 0 L18.7121 0 C19.0455 0 19.3159 0.27097 19.3159 0.60543 L19.3159 4.01135 C19.3159 4.34546 19.0455 4.61671 18.7121 4.61671 Z"></path></g><g transform="translate(112.29,1.01)"><path d="M19.2186 26.008 L7.44559 26.008 C3.33361 26.008 0 22.6645 0 18.5402 L0 7.46788 C0 3.34334 3.33333 0 7.44559 0 L19.2186 0 C19.552 0 19.8222 0.27097 19.8222 0.60543 L19.8222 4.01135 C19.8222 4.34574 19.552 4.61671 19.2186 4.61671 L7.44559 4.61671 C5.87584 4.61671 4.60297 5.89316 4.60297 7.46788 L4.60297 18.5402 C4.60297 20.1149 5.87584 21.3913 7.44559 21.3913 L19.2186 21.3913 C19.552 21.3913 19.8222 21.6623 19.8222 21.9967 L19.8222 25.4027 C19.8222 25.737 19.552 26.008 19.2186 26.008 Z"></path></g><g transform="translate(86.35,11.72)"><path d="M19.3118 14.5783 C19.3118 14.9127 19.0417 15.184 18.7083 15.184 L6.40534 15.184 C2.87346 15.184 0 11.7961 0 8.2537 L0 2.74008 C0 1.22661 1.22302 0 2.73199 0 L18.7083 0 C19.0417 0 19.3118 0.27125 19.3118 0.60564 L19.3118 4.01128 C19.3118 4.34574 19.0417 4.61671 18.7083 4.61671 L4.60297 4.61671 L4.60297 7.85666 C4.60297 8.855 5.40997 9.66434 6.40534 9.66434 L18.7083 9.66434 C19.0417 9.66434 19.3118 9.93531 19.3118 10.2698 L19.3118 14.5783 Z"></path></g></g></svg></a>
-      <a class="nav-link" href="#contacto">Contacto</a>
+  <header class="w26-nav">
+    <div class="w26-nav-inner">
+      <a class="w26-nav-logo" href="https://www.witec.id" aria-label="WITEC"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 134 28" height="28" width="134"><g fill="#ffffff"><g transform="translate(46.49,0.99)"><path d="M3.99941 25.9744 L0.603908 25.9744 C0.270444 25.9744 0 25.7034 0 25.369 L0 0.60543 C0 0.27097 0.270444 0 0.603908 0 L3.99941 0 C4.33281 0 4.60297 0.27097 4.60297 0.60543 L4.60297 25.369 C4.60297 25.7034 4.33281 25.9744 3.99941 25.9744 Z"></path></g><g transform="translate(1.89,0.99)"><path d="M33.294 0.42077 L27.1531 19.5357 L21.4765 0.43365 C21.3999 0.17633 21.1641 0 20.8964 0 L17.1322 0 C16.8695 0 16.6366 0.17003 16.5562 0.42077 L10.4159 19.5357 L4.73849 0.43365 C4.66193 0.17633 4.4261 0 4.15838 0 L0.605775 0 C0.200704 0 -0.0901874 0.3913 0.0256668 0.78036 L6.69489 23.2211 C7.17987 24.8533 8.64605 25.9629 10.3447 25.9809 C10.3592 25.9818 10.3737 25.9818 10.3886 25.9818 C12.0683 25.9818 13.5385 24.9096 14.0543 23.302 L18.9384 8.09949 L23.432 23.2211 C23.917 24.8533 25.3841 25.9629 27.0819 25.9809 C27.0972 25.9818 27.1114 25.9818 27.1258 25.9818 C28.8063 25.9818 30.2757 24.9096 30.7923 23.302 L38.0237 0.79324 C38.1496 0.40138 37.8582 0 37.4476 0 L33.8702 0 C33.6075 0 33.3746 0.17003 33.294 0.42077 Z"></path></g><g transform="translate(57.58,1.01)"><path d="M21.6663 0 L0.603627 0 C0.270163 0 0 0.27097 0 0.60543 L0 4.01135 C0 4.34574 0.270163 4.61671 0.603627 4.61671 L8.8336 4.61671 L8.8336 25.3548 C8.8336 25.6892 9.10376 25.9602 9.43716 25.9602 L12.8327 25.9602 C13.1661 25.9602 13.4366 25.6892 13.4366 25.3548 L13.4366 4.61671 L21.6663 4.61671 C21.9997 4.61671 22.2701 4.34574 22.2701 4.01135 L22.2701 0.60543 C22.2701 0.27097 21.9997 0 21.6663 0 Z"></path></g><g transform="translate(86.35,1.01)"><path d="M18.7121 4.61671 L0.603836 4.61671 C0.270441 4.61671 0 4.34546 0 4.01135 L0 0.60543 C0 0.27097 0.270441 0 0.603836 0 L18.7121 0 C19.0455 0 19.3159 0.27097 19.3159 0.60543 L19.3159 4.01135 C19.3159 4.34546 19.0455 4.61671 18.7121 4.61671 Z"></path></g><g transform="translate(112.29,1.01)"><path d="M19.2186 26.008 L7.44559 26.008 C3.33361 26.008 0 22.6645 0 18.5402 L0 7.46788 C0 3.34334 3.33333 0 7.44559 0 L19.2186 0 C19.552 0 19.8222 0.27097 19.8222 0.60543 L19.8222 4.01135 C19.8222 4.34574 19.552 4.61671 19.2186 4.61671 L7.44559 4.61671 C5.87584 4.61671 4.60297 5.89316 4.60297 7.46788 L4.60297 18.5402 C4.60297 20.1149 5.87584 21.3913 7.44559 21.3913 L19.2186 21.3913 C19.552 21.3913 19.8222 21.6623 19.8222 21.9967 L19.8222 25.4027 C19.8222 25.737 19.552 26.008 19.2186 26.008 Z"></path></g><g transform="translate(86.35,11.72)"><path d="M19.3118 14.5783 C19.3118 14.9127 19.0417 15.184 18.7083 15.184 L6.40534 15.184 C2.87346 15.184 0 11.7961 0 8.2537 L0 2.74008 C0 1.22661 1.22302 0 2.73199 0 L18.7083 0 C19.0417 0 19.3118 0.27125 19.3118 0.60564 L19.3118 4.01128 C19.3118 4.34574 19.0417 4.61671 18.7083 4.61671 L4.60297 4.61671 L4.60297 7.85666 C4.60297 8.855 5.40997 9.66434 6.40534 9.66434 L18.7083 9.66434 C19.0417 9.66434 19.3118 9.93531 19.3118 10.2698 L19.3118 14.5783 Z"></path></g></g></svg></a>
+      <nav class="w26-nav-links" aria-label="Principal">
+        <a class="w26-nav-link" href="https://www.witec.id/identia">identIA</a>
+        <a class="w26-nav-link" href="https://www.witec.id/firmo-yo">firmoYo</a>
+        <a class="w26-nav-link" href="https://www.witec.id/certificados">Certificados</a>
+        <a class="w26-nav-link" href="https://www.witec.id/quienes-somos">Quiénes somos</a>
+      </nav>
+      <div class="w26-nav-ctas">
+        <a class="w26-nav-link" href="https://www.witec.id/contacto">Contacto</a>
+        <a class="w26-nav-btn" href="https://www.witec.id/contacto">Agendar una demo</a>
+      </div>
+      <button class="w26-nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <span class="w26-nav-burger-bar"></span><span class="w26-nav-burger-bar"></span><span class="w26-nav-burger-bar"></span>
+      </button>
     </div>
-  </div>
+    <nav class="w26-nav-mobile" aria-label="Principal (móvil)">
+      <div class="w26-nav-mobile-inner">
+        <a class="w26-nav-mlink" href="https://www.witec.id/identia">identIA</a>
+        <a class="w26-nav-mlink" href="https://www.witec.id/firmo-yo">firmoYo</a>
+        <a class="w26-nav-mlink" href="https://www.witec.id/certificados">Certificados</a>
+        <a class="w26-nav-mlink" href="https://www.witec.id/quienes-somos">Quiénes somos</a>
+        <a class="w26-nav-mlink" href="https://www.witec.id/contacto">Contacto</a>
+        <a class="w26-nav-mbtn" href="https://www.witec.id/contacto">Agendar una demo</a>
+      </div>
+    </nav>
+  </header>
+  <script>
+    document.querySelector('.w26-nav-burger').addEventListener('click', function () {
+      var open = this.closest('.w26-nav').classList.toggle('w26-nav-open');
+      this.setAttribute('aria-expanded', open);
+    });
+  </script>
 
   <div class="hero">
     <div class="wrap">
