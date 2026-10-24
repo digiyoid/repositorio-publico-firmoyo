@@ -6,7 +6,7 @@
 <title>Repositorio Público - WITEC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Open+Sans:wdth,wght@75,800&display=swap" rel="stylesheet">
 <style>
   /* Paleta y tipografía tomadas de witec.id */
   :root {
@@ -65,42 +65,37 @@
   }
 
   /* Portada */
-  .hero {
-    background-color: var(--navy);
-    background-image:
-      radial-gradient(900px 500px at 60% -10%, rgba(65,84,249,0.28), transparent 70%),
-      radial-gradient(600px 400px at 5% 90%, rgba(7,132,234,0.15), transparent 70%);
-    padding: 72px 0 64px;
+  /* Portada con las medidas de la cabecera de witec.id/certificados */
+  .hero { background-color: var(--navy); padding: 150px 24px 80px; }
+  .hero-inner { max-width: 1140px; margin: 0 auto; }
+  .hero h1 {
+    color: #ffffff; font-family: "Open Sans", Arimo, sans-serif; font-stretch: 75%; font-weight: 800;
+    font-size: clamp(40px, 8vw, 56px); line-height: 1.1; margin: 0 0 20px;
   }
-  .badge {
-    display: inline-block;
-    padding: 8px 18px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.22);
-    background: rgba(255,255,255,0.08);
-    color: var(--lavender-text);
-    font-size: 13px;
-    font-weight: 700;
-  }
-  .hero h1 { color: #ffffff; font-size: clamp(32px, 6vw, 48px); line-height: 1.15; margin: 20px 0 14px; }
-  .hero p { color: var(--lavender-text); font-size: 17px; line-height: 1.55; margin: 0; max-width: 600px; }
-  .ctas { display: flex; flex-wrap: wrap; gap: 10px; margin: 32px 0 0; padding: 0; list-style: none; }
+  .hero p { color: rgba(255,255,255,0.78); font-size: 18px; line-height: 1.6; margin: 0; max-width: 720px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 0; padding: 0; list-style: none; }
   .btn {
     display: inline-block;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-size: 15px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13.5px;
     font-weight: 700;
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   }
-  .btn-primary { background: var(--lilac); color: #ffffff; }
+  .btn-primary { background: var(--lilac); color: #ffffff; border: 1.5px solid var(--lilac); }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(65,84,249,0.35); }
   .btn-secondary { color: #ffffff; border: 1.5px solid rgba(255,255,255,0.3); }
   .btn-secondary:hover { transform: translateY(-2px); }
 
   /* Secciones */
   section { padding: 56px 0 0; scroll-margin-top: 16px; }
+
+  /* Contenido en dos columnas, alineado con la portada */
+  main.wrap { max-width: 1188px; }
+  @media (min-width: 900px) {
+    main.wrap { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; align-items: start; }
+  }
   .eyebrow { color: var(--lilac); font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; margin: 0 0 8px; }
   h2 { font-size: 26px; line-height: 1.2; margin: 0 0 8px; }
   .lead { color: var(--gray-text); margin: 0 0 20px; }
@@ -122,14 +117,6 @@
   .pending .meta { color: var(--gray-text); background: transparent; font-weight: 400; }
 
 
-  /* Contacto, con el estilo de las tarjetas oscuras de witec.id */
-  .contact {
-    background: var(--navy); color: var(--lavender-text);
-    border-radius: 16px; padding: 28px; font-size: 15px;
-  }
-  .contact strong { color: #ffffff; font-size: 18px; }
-  .contact p { margin: 4px 0; }
-  .contact a { color: var(--lavender); }
 
   /* Pie de página igual al de witec.id */
   footer { background: var(--navy); margin-top: 72px; padding: 64px 0 40px; }
@@ -149,7 +136,7 @@
   }
   @media (max-width: 560px) {
     ul.docs { padding: 4px 16px; }
-    .hero { padding: 48px 0 44px; }
+    .hero { padding: 80px 16px 56px; }
   }
 </style>
 </head>
@@ -191,10 +178,9 @@
   </script>
 
   <div class="hero">
-    <div class="wrap">
-      <span class="badge">Repositorio público</span>
+    <div class="hero-inner">
       <h1>Todo sobre tu firma electrónica, en un solo lugar</h1>
-      <p>Las reglas del servicio, nuestros certificados, dónde tramitar tu firma y cómo contactarnos.</p>
+      <p>Las reglas del servicio, nuestros certificados y dónde tramitar tu firma.</p>
       <ul class="ctas">
         <li><a class="btn btn-primary" href="#tramitar">Quiero mi firma</a></li>
         <li><a class="btn btn-secondary" href="#verificar">Verificar un certificado</a></li>
@@ -204,132 +190,122 @@
   </div>
 
   <main class="wrap">
+    <div class="col">
+      <section id="documentos">
+        <p class="eyebrow">Documentos</p>
+        <h2>Reglas del servicio</h2>
+        <p class="lead">Qué te ofrecemos, cómo trabajamos y qué firmás al contratar.</p>
+        <ul class="docs">
+          <li><a href="contrato-servicios/politica-de-certificacion-f1.pdf">
+            <span><span class="name">Política de Certificación – Tipo F1</span>
+            <span class="desc">Reglas del certificado cualificado tributario.</span></span>
+            <span class="meta">PDF</span></a></li>
+          <li><a href="contrato-servicios/politica-de-certificacion-f3.pdf">
+            <span><span class="name">Política de Certificación – Tipo F3</span>
+            <span class="desc">Reglas del certificado cualificado de la ICPP.</span></span>
+            <span class="meta">PDF</span></a></li>
+          <li><a href="declaracion-de-practicas/declaracion-practicas-certificacion.pdf">
+            <span><span class="name">Declaración de Prácticas de Certificación</span>
+            <span class="desc">Cómo emitimos, renovamos y revocamos certificados.</span></span>
+            <span class="meta">PDF</span></a></li>
+          <li class="pending"><div class="row">
+            <span><span class="name">Contrato de prestación de servicios (modelo)</span>
+            <span class="desc">Tus derechos y obligaciones al obtener un certificado.</span></span>
+            <span class="meta">Próximamente</span></div></li>
+          <li><a href="politica-de-privacidad/POLITICA-DE-PRIVACIDAD-DOC-PP-V1.0.pdf">
+            <span><span class="name">Política de Privacidad</span>
+            <span class="desc">Cómo protegemos tus datos personales.</span></span>
+            <span class="meta">PDF</span></a></li>
+        </ul>
+      </section>
 
-    <section id="documentos">
-      <p class="eyebrow">Documentos</p>
-      <h2>Reglas del servicio</h2>
-      <p class="lead">Qué te ofrecemos, cómo trabajamos y qué firmás al contratar.</p>
-      <ul class="docs">
-        <li><a href="contrato-servicios/politica-de-certificacion-f1.pdf">
-          <span><span class="name">Política de Certificación – Tipo F1</span>
-          <span class="desc">Reglas del certificado cualificado tributario.</span></span>
-          <span class="meta">PDF</span></a></li>
-        <li><a href="contrato-servicios/politica-de-certificacion-f3.pdf">
-          <span><span class="name">Política de Certificación – Tipo F3</span>
-          <span class="desc">Reglas del certificado cualificado de la ICPP.</span></span>
-          <span class="meta">PDF</span></a></li>
-        <li><a href="declaracion-de-practicas/declaracion-practicas-certificacion.pdf">
-          <span><span class="name">Declaración de Prácticas de Certificación</span>
-          <span class="desc">Cómo emitimos, renovamos y revocamos certificados.</span></span>
-          <span class="meta">PDF</span></a></li>
-        <li class="pending"><div class="row">
-          <span><span class="name">Contrato de prestación de servicios (modelo)</span>
-          <span class="desc">Tus derechos y obligaciones al obtener un certificado.</span></span>
-          <span class="meta">Próximamente</span></div></li>
-        <li><a href="politica-de-privacidad/POLITICA-DE-PRIVACIDAD-DOC-PP-V1.0.pdf">
-          <span><span class="name">Política de Privacidad</span>
-          <span class="desc">Cómo protegemos tus datos personales.</span></span>
-          <span class="meta">PDF</span></a></li>
-      </ul>
-    </section>
+      <section id="verificar">
+        <p class="eyebrow">Certificados</p>
+        <h2>Verificar un certificado</h2>
+        <p class="lead">Para comprobar que una firma es válida y que el certificado no fue revocado.</p>
+        <ul class="docs">
+          <li class="pending"><div class="row">
+            <span><span class="name">Certificado de la AC Raíz-Py</span>
+            <span class="desc">La autoridad del Estado que respalda a todos los prestadores.</span></span>
+            <span class="meta">Próximamente</span></div></li>
+          <li><a href="https://crl.witec.id/digiyosa-ca.cer">
+            <span><span class="name">Certificado de DigiYo</span>
+            <span class="desc">Nuestro certificado como prestador.</span></span>
+            <span class="meta">CER</span></a></li>
+          <li><a href="https://crl.witec.id/digiyosa-ca.crl">
+            <span><span class="name">Lista de certificados revocados (LCR)</span>
+            <span class="desc">Certificados que ya no son válidos. Se actualiza con cada revocación.</span></span>
+            <span class="meta">CRL</span></a></li>
+        </ul>
+      </section>
 
-    <section id="verificar">
-      <p class="eyebrow">Certificados</p>
-      <h2>Verificar un certificado</h2>
-      <p class="lead">Para comprobar que una firma es válida y que el certificado no fue revocado.</p>
-      <ul class="docs">
-        <li class="pending"><div class="row">
-          <span><span class="name">Certificado de la AC Raíz-Py</span>
-          <span class="desc">La autoridad del Estado que respalda a todos los prestadores.</span></span>
-          <span class="meta">Próximamente</span></div></li>
-        <li><a href="https://crl.witec.id/digiyosa-ca.cer">
-          <span><span class="name">Certificado de DigiYo</span>
-          <span class="desc">Nuestro certificado como prestador.</span></span>
-          <span class="meta">CER</span></a></li>
-        <li><a href="https://crl.witec.id/digiyosa-ca.crl">
-          <span><span class="name">Lista de certificados revocados (LCR)</span>
-          <span class="desc">Certificados que ya no son válidos. Se actualiza con cada revocación.</span></span>
-          <span class="meta">CRL</span></a></li>
-      </ul>
-    </section>
+      <section id="sello">
+        <p class="eyebrow">Servicio</p>
+        <h2>Sello de tiempo</h2>
+        <p class="lead">Demuestra que un documento existía en una fecha y hora y que no cambió después.</p>
+        <ul class="docs">
+          <li class="pending"><div class="row"><span><span class="name">Certificado del sello de tiempo</span></span><span class="meta">Próximamente</span></div></li>
+          <li class="pending"><div class="row"><span><span class="name">Política y Declaración de Prácticas</span></span><span class="meta">Próximamente</span></div></li>
+          <li class="pending"><div class="row"><span><span class="name">Contrato del servicio</span></span><span class="meta">Próximamente</span></div></li>
+          <li class="pending"><div class="row"><span><span class="name">Resolución de habilitación</span></span><span class="meta">Próximamente</span></div></li>
+          <li class="pending"><div class="row"><span><span class="name">Sellos emitidos</span></span><span class="meta">Próximamente</span></div></li>
+        </ul>
+      </section>
+    </div>
+    <div class="col">
+      <section id="normativa">
+        <p class="eyebrow">Normativa</p>
+        <h2>Marco legal</h2>
+        <p class="lead">Resoluciones que nos habilitan y normas que regulan la firma electrónica en Paraguay.</p>
+        <ul class="docs">
+          <li class="pending"><div class="row">
+            <span><span class="name">Resoluciones de habilitación de DigiYo</span>
+            <span class="desc">Resoluciones del MIC que nos autorizan como prestador.</span></span>
+            <span class="meta">Próximamente</span></div></li>
+          <li class="pending"><div class="row">
+            <span><span class="name">Leyes y normas de la ICPP</span>
+            <span class="desc">Leyes, decretos, reglamentos y resoluciones vigentes.</span></span>
+            <span class="meta">Próximamente</span></div></li>
+        </ul>
+      </section>
 
-    <section id="tramitar">
-      <p class="eyebrow">Atención</p>
-      <h2>Dónde tramitar tu firma</h2>
-      <p class="lead">FirmoYo es su propia Autoridad de Registro (AR): verificamos tu identidad directamente, sin intermediarios.</p>
-      <ul class="docs">
-        <li><div class="row">
-          <span><span class="name">Autoridad de Registro: FirmoYo</span>
-          <span class="desc">Operada por DigiYo S.A. · Av. Gral. José Gervasio Artigas 2025, Asunción. Lunes a viernes de 08:00 a 18:00 hs.</span></span>
-          <span class="meta">Propia</span></div></li>
-      </ul>
-    </section>
+      <section id="ayuda">
+        <p class="eyebrow">Ayuda</p>
+        <h2>Manuales y descargas</h2>
+        <p class="lead">Guías paso a paso y programas para usar tu certificado.</p>
+        <ul class="docs">
+          <li class="pending"><div class="row"><span><span class="name">Manuales de uso</span></span><span class="meta">Próximamente</span></div></li>
+        </ul>
+      </section>
 
-    <section id="validacion">
-      <p class="eyebrow">Red de confianza</p>
-      <h2>Validación y proveedores</h2>
-      <p class="lead">FirmoYo es su propia Autoridad de Validación (AV): comprobamos el estado de los certificados con nuestra propia infraestructura.</p>
-      <ul class="docs">
-        <li><div class="row">
-          <span><span class="name">Autoridad de Validación: FirmoYo</span>
-          <span class="desc">Operada por DigiYo S.A. en sus propias instalaciones.</span></span>
-          <span class="meta">Propia</span></div></li>
-        <li class="pending"><div class="row">
-          <span><span class="name">Proveedores de servicios de soporte (PSS)</span>
-          <span class="desc">Empresas que nos prestan servicios técnicos vinculados.</span></span>
-          <span class="meta">Próximamente</span></div></li>
-      </ul>
-    </section>
+      <section id="validacion">
+        <p class="eyebrow">Red de confianza</p>
+        <h2>Validación y proveedores</h2>
+        <p class="lead">FirmoYo es su propia Autoridad de Validación (AV): comprobamos el estado de los certificados con nuestra propia infraestructura.</p>
+        <ul class="docs">
+          <li><div class="row">
+            <span><span class="name">Autoridad de Validación: FirmoYo</span>
+            <span class="desc">Operada por DigiYo S.A. en sus propias instalaciones.</span></span>
+            <span class="meta">Propia</span></div></li>
+          <li class="pending"><div class="row">
+            <span><span class="name">Proveedores de servicios de soporte (PSS)</span>
+            <span class="desc">Empresas que nos prestan servicios técnicos vinculados.</span></span>
+            <span class="meta">Próximamente</span></div></li>
+        </ul>
+      </section>
 
-    <section id="sello">
-      <p class="eyebrow">Servicio</p>
-      <h2>Sello de tiempo</h2>
-      <p class="lead">Demuestra que un documento existía en una fecha y hora y que no cambió después.</p>
-      <ul class="docs">
-        <li class="pending"><div class="row"><span><span class="name">Certificado del sello de tiempo</span></span><span class="meta">Próximamente</span></div></li>
-        <li class="pending"><div class="row"><span><span class="name">Política y Declaración de Prácticas</span></span><span class="meta">Próximamente</span></div></li>
-        <li class="pending"><div class="row"><span><span class="name">Contrato del servicio</span></span><span class="meta">Próximamente</span></div></li>
-        <li class="pending"><div class="row"><span><span class="name">Resolución de habilitación</span></span><span class="meta">Próximamente</span></div></li>
-        <li class="pending"><div class="row"><span><span class="name">Sellos emitidos</span></span><span class="meta">Próximamente</span></div></li>
-      </ul>
-    </section>
-
-    <section id="normativa">
-      <p class="eyebrow">Normativa</p>
-      <h2>Marco legal</h2>
-      <p class="lead">Resoluciones que nos habilitan y normas que regulan la firma electrónica en Paraguay.</p>
-      <ul class="docs">
-        <li class="pending"><div class="row">
-          <span><span class="name">Resoluciones de habilitación de DigiYo</span>
-          <span class="desc">Resoluciones del MIC que nos autorizan como prestador.</span></span>
-          <span class="meta">Próximamente</span></div></li>
-        <li class="pending"><div class="row">
-          <span><span class="name">Leyes y normas de la ICPP</span>
-          <span class="desc">Leyes, decretos, reglamentos y resoluciones vigentes.</span></span>
-          <span class="meta">Próximamente</span></div></li>
-      </ul>
-    </section>
-
-    <section id="ayuda">
-      <p class="eyebrow">Ayuda</p>
-      <h2>Manuales y descargas</h2>
-      <p class="lead">Guías paso a paso y programas para usar tu certificado.</p>
-      <ul class="docs">
-        <li class="pending"><div class="row"><span><span class="name">Manuales de uso</span></span><span class="meta">Próximamente</span></div></li>
-      </ul>
-    </section>
-
-    <section id="contacto">
-      <p class="eyebrow">Contacto</p>
-      <h2>¿Necesitás ayuda?</h2>
-      <div class="contact">
-        <p><strong>DIGIYO S.A.</strong></p>
-        <p>RUC 80140723-0</p>
-        <p>Av. Gral. José Gervasio Artigas 2025, Asunción 001429</p>
-        <p><a href="mailto:contacto@witec.id">contacto@witec.id</a></p>
-        <p>Lunes a viernes de 08:00 a 18:00 hs</p>
-      </div>
-    </section>
+      <section id="tramitar">
+        <p class="eyebrow">Atención</p>
+        <h2>Dónde tramitar tu firma</h2>
+        <p class="lead">FirmoYo es su propia Autoridad de Registro (AR): verificamos tu identidad directamente, sin intermediarios.</p>
+        <ul class="docs">
+          <li><div class="row">
+            <span><span class="name">Autoridad de Registro: FirmoYo</span>
+            <span class="desc">Operada por DigiYo S.A. · Av. Gral. José Gervasio Artigas 2025, Asunción. Lunes a viernes de 08:00 a 18:00 hs.</span></span>
+            <span class="meta">Propia</span></div></li>
+        </ul>
+      </section>
+    </div>
 
   </main>
 
