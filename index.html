@@ -115,6 +115,8 @@
   }
   .pending .name { color: var(--gray-text); font-weight: 400; }
   .pending .meta { color: var(--gray-text); background: transparent; font-weight: 400; }
+  ul.docs a.meta { display: inline-block; padding: 4px 10px; color: var(--lilac); }
+  ul.docs a.meta:hover { background: var(--lilac); color: #ffffff; border-color: var(--lilac); }
 
 
 
@@ -184,7 +186,7 @@
       <h1>Todo sobre tu firma electrónica, en un solo lugar</h1>
       <p>Las reglas del servicio, nuestros certificados y dónde tramitar tu firma.</p>
       <ul class="ctas">
-        <li><a class="btn btn-primary" href="#tramitar">Quiero mi firma</a></li>
+        <li><a class="btn btn-primary" href="#autoridades">Quiero mi firma</a></li>
         <li><a class="btn btn-secondary" href="#verificar">Verificar un certificado</a></li>
         <li><a class="btn btn-secondary" href="#documentos">Leer el contrato</a></li>
       </ul>
@@ -211,8 +213,12 @@
             <span class="desc">Cómo emitimos, renovamos y revocamos certificados.</span></span>
             <span class="meta">PDF</span></a></li>
           <li class="pending"><div class="row">
-            <span><span class="name">Contrato de prestación de servicios (modelo)</span>
-            <span class="desc">Tus derechos y obligaciones al obtener un certificado.</span></span>
+            <span><span class="name">Contrato de prestación de servicios – Tipo F3</span>
+            <span class="desc">Tus derechos y obligaciones con el certificado Tipo F3.</span></span>
+            <span class="meta">Próximamente</span></div></li>
+          <li class="pending"><div class="row">
+            <span><span class="name">Contrato de prestación de servicios – Tipo F1</span>
+            <span class="desc">Tus derechos y obligaciones con el certificado Tipo F1.</span></span>
             <span class="meta">Próximamente</span></div></li>
           <li><a href="politica-de-privacidad/POLITICA-DE-PRIVACIDAD-DOC-PP-V1.0.pdf">
             <span><span class="name">Política de Privacidad</span>
@@ -280,13 +286,18 @@
         </ul>
       </section>
 
-      <section id="validacion">
+      <section id="autoridades">
         <p class="eyebrow">Red de confianza</p>
-        <h2>Validación y proveedores</h2>
+        <h2>Autoridad de Registro y Validación</h2>
+        <p class="lead">Pilares de la Infraestructura de Claves Públicas del Paraguay (ICPP): la AR verifica tu identidad y aprueba tu solicitud de certificado; la AV confirma que el certificado sigue siendo válido.</p>
         <ul class="docs">
           <li><div class="row">
+            <span><span class="name">Autoridad de Registro: FirmoYo</span>
+            <span class="desc">Operada por DigiYo S.A. (RUC 80140723-0) · Av. Gral. José Gervasio Artigas 2025, Asunción.</span></span>
+            <a class="meta" href="https://www.witec.id/identia">identIA</a></div></li>
+          <li><div class="row">
             <span><span class="name">Autoridad de Validación: FirmoYo</span>
-            <span class="desc">Operada por DigiYo S.A. (RUC 80140723-0) · Av. Gral. José Gervasio Artigas 2025, Asunción. Lunes a viernes de 08:00 a 18:00 hs.</span></span>
+            <span class="desc">Operada por DigiYo S.A. (RUC 80140723-0) · Av. Gral. José Gervasio Artigas 2025, Asunción.</span></span>
             <span class="meta">Propia</span></div></li>
           <li class="pending"><div class="row">
             <span><span class="name">Proveedores de servicios de soporte (PSS)</span>
@@ -295,16 +306,6 @@
         </ul>
       </section>
 
-      <section id="tramitar">
-        <p class="eyebrow">Atención</p>
-        <h2>Dónde tramitar tu firma</h2>
-        <ul class="docs">
-          <li><div class="row">
-            <span><span class="name">Autoridad de Registro: FirmoYo</span>
-            <span class="desc">Operada por DigiYo S.A. (RUC 80140723-0) · Av. Gral. José Gervasio Artigas 2025, Asunción. Lunes a viernes de 08:00 a 18:00 hs.</span></span>
-            <span class="meta">Propia</span></div></li>
-        </ul>
-      </section>
     </div>
 
   </main>
