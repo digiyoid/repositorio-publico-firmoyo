@@ -29,7 +29,6 @@
     background: #ffffff;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 
   /* Barra superior igual a la de witec.id */
   .w26-nav { background-color: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -88,40 +87,63 @@
   .btn-secondary { color: #ffffff; border: 1.5px solid rgba(255,255,255,0.3); }
   .btn-secondary:hover { transform: translateY(-2px); }
 
-  /* Secciones */
-  section { padding: 56px 0 0; scroll-margin-top: 16px; }
-
-  /* Contenido en dos columnas, alineado con la portada */
-  main.wrap { max-width: 1188px; }
+  /* Tarjetas con el estilo de witec.id/certificados */
+  .services { background: #f4f6fb; padding: 80px 24px; }
+  .services-inner { max-width: 1140px; margin: 0 auto; }
+  .col { display: flex; flex-direction: column; gap: 24px; }
+  .col + .col { margin-top: 24px; }
   @media (min-width: 900px) {
-    main.wrap { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; align-items: start; }
+    .services-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+    .col + .col { margin-top: 0; }
   }
-  .eyebrow { color: var(--lilac); font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; margin: 0 0 8px; }
-  h2 { font-size: 26px; line-height: 1.2; margin: 0 0 8px; }
-  .lead { color: var(--gray-text); margin: 0 0 20px; }
+  .card {
+    background: #ffffff; border-radius: 16px; padding: 36px 32px; scroll-margin-top: 24px;
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(24,19,53,.12); }
+  .card-icon {
+    display: flex; justify-content: center; align-items: center;
+    width: 56px; height: 56px; margin-bottom: 20px; border-radius: 14px; background: rgba(65,84,249,0.08);
+  }
+  .card-title { color: var(--navy); font-size: 22px; line-height: 1.25; margin: 0 0 12px; }
+  .card-head { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+  .card-head .card-icon { flex: 0 0 auto; margin-bottom: 0; }
+  .card-head .card-title { margin: 0; }
+  .card-text { color: #4a4a68; font-size: 16px; line-height: 1.6; margin: 0 0 20px; }
 
-  ul.docs { list-style: none; margin: 0; padding: 4px 24px; background: var(--bg-subtle); border-radius: 16px; }
-  ul.docs li + li { border-top: 1px solid var(--border-subtle); }
+  ul.docs { list-style: none; margin: 0; padding: 0; }
+  ul.docs li { border-top: 1px solid var(--border-subtle); }
   ul.docs a, ul.docs .row {
     display: flex; justify-content: space-between; align-items: center; gap: 16px;
     padding: 16px 0; color: inherit; text-decoration: none;
   }
+  ul.docs li:last-child a, ul.docs li:last-child .row { padding-bottom: 0; }
   .name { font-weight: 700; }
   ul.docs a:hover .name { color: var(--lilac); }
   .desc { display: block; font-size: 14.5px; color: var(--gray-text); }
   .meta {
-    flex: 0 0 auto; font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
-    padding: 4px 10px; border-radius: 6px; background: #ffffff; color: var(--lilac); border: 1px solid var(--border-subtle);
+    flex: 0 0 auto; padding: 8px 16px; border-radius: 10px;
+    background: var(--lilac); color: #ffffff; font-size: 14px; font-weight: 700; white-space: nowrap;
+    transition: background .3s;
   }
+  ul.docs a:hover .meta { background: #2f3fd4; }
   .pending .name { color: var(--gray-text); font-weight: 400; }
-  .pending .meta { color: var(--gray-text); background: transparent; font-weight: 400; }
-  ul.docs a.meta { display: inline-block; padding: 4px 10px; color: var(--lilac); }
-  ul.docs a.meta:hover { background: var(--lilac); color: #ffffff; border-color: var(--lilac); }
+  .pending .meta { background: #f4f6fb; color: var(--gray-text); font-weight: 400; font-size: 13px; }
 
+  /* Llamado a la acción, igual al de witec.id/certificados */
+  .cta { background: var(--navy); padding: 90px 24px; text-align: center; }
+  .cta h2 { color: #ffffff; font-size: 36px; line-height: 1.2; margin: 0 0 14px; }
+  .cta p { color: rgba(255,255,255,0.75); font-size: 17px; margin: 0 0 30px; }
+  .cta a {
+    display: inline-block; padding: 14px 32px; border-radius: 10px;
+    background: #ffffff; color: var(--navy); font-size: 16px; font-weight: 700; text-decoration: none; transition: background .3s;
+  }
+  .cta a:hover { background: #eef1ff; }
 
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
 
   /* Pie de página igual al de witec.id */
-  footer { background: var(--navy); margin-top: 72px; padding: 64px 0 40px; }
+  footer { background: var(--navy); padding: 64px 0 40px; border-top: 1px solid rgba(255,255,255,0.08); }
   .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 40px; }
   .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
   .footer-cols { display: flex; gap: 72px; }
@@ -137,7 +159,9 @@
     .footer-cols { gap: 40px; flex-wrap: wrap; }
   }
   @media (max-width: 560px) {
-    ul.docs { padding: 4px 16px; }
+    .services { padding: 56px 16px; }
+    .card { padding: 28px 20px; }
+    .cta h2 { font-size: 28px; }
     .hero { padding: 80px 16px 56px; }
   }
 </style>
@@ -152,7 +176,8 @@
         <a class="w26-nav-link" href="https://www.witec.id/identia">identIA</a>
         <a class="w26-nav-link" href="https://www.witec.id/firmo-yo">firmoYo</a>
         <a class="w26-nav-link" href="https://www.witec.id/certificados">Certificados</a>
-        <a class="w26-nav-link" href="https://repositorio.witec.id/" aria-current="page">Repositorio</a>
+        <a class="w26-nav-link" href="https://repositorio.witec.id/" aria-current="page">Repositorio &amp; Legales</a>
+        <a class="w26-nav-link" href="https://www.witec.id/autoridad-de-registro-y-validacion">Autoridad de Registro y Validación</a>
       </nav>
       <div class="w26-nav-ctas">
         <a class="w26-nav-link" href="https://www.witec.id/contacto">Contacto</a>
@@ -168,7 +193,8 @@
         <a class="w26-nav-mlink" href="https://www.witec.id/identia">identIA</a>
         <a class="w26-nav-mlink" href="https://www.witec.id/firmo-yo">firmoYo</a>
         <a class="w26-nav-mlink" href="https://www.witec.id/certificados">Certificados</a>
-        <a class="w26-nav-mlink" href="https://repositorio.witec.id/" aria-current="page">Repositorio</a>
+        <a class="w26-nav-mlink" href="https://repositorio.witec.id/" aria-current="page">Repositorio &amp; Legales</a>
+        <a class="w26-nav-mlink" href="https://www.witec.id/autoridad-de-registro-y-validacion">Autoridad de Registro y Validación</a>
         <a class="w26-nav-mlink" href="https://www.witec.id/contacto">Contacto</a>
         <a class="w26-nav-mbtn" href="https://www.witec.id/contacto">Agendar una demo</a>
       </div>
@@ -186,32 +212,35 @@
       <h1>Todo sobre tu firma electrónica, en un solo lugar</h1>
       <p>Las reglas del servicio, nuestros certificados y dónde tramitar tu firma.</p>
       <ul class="ctas">
-        <li><a class="btn btn-primary" href="#autoridades">Quiero mi firma</a></li>
+        <li><a class="btn btn-primary" href="https://www.witec.id/autoridad-de-registro-y-validacion">Quiero mi firma</a></li>
         <li><a class="btn btn-secondary" href="#verificar">Verificar un certificado</a></li>
         <li><a class="btn btn-secondary" href="#documentos">Leer el contrato</a></li>
       </ul>
     </div>
   </div>
 
-  <main class="wrap">
+  <main class="services">
+  <div class="services-inner">
     <div class="col">
-      <section id="documentos">
-        <p class="eyebrow">Documentos</p>
-        <h2>Reglas del servicio</h2>
-        <p class="lead">Qué te ofrecemos, cómo trabajamos y qué firmás al contratar.</p>
+      <section class="card" id="documentos">
+        <div class="card-head">
+          <div class="card-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#4154F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M8 13h8M8 17h5"></path></svg></div>
+          <h2 class="card-title">Reglas del servicio</h2>
+        </div>
+        <p class="card-text">Qué te ofrecemos, cómo trabajamos y qué firmás al contratar.</p>
         <ul class="docs">
           <li><a href="contrato-servicios/politica-de-certificacion-f1.pdf">
             <span><span class="name">Política de Certificación – Tipo F1</span>
             <span class="desc">Reglas del certificado cualificado tributario.</span></span>
-            <span class="meta">PDF</span></a></li>
+            <span class="meta">Descargar PDF</span></a></li>
           <li><a href="contrato-servicios/politica-de-certificacion-f3.pdf">
             <span><span class="name">Política de Certificación – Tipo F3</span>
             <span class="desc">Reglas del certificado cualificado de la ICPP.</span></span>
-            <span class="meta">PDF</span></a></li>
+            <span class="meta">Descargar PDF</span></a></li>
           <li><a href="declaracion-de-practicas/declaracion-practicas-certificacion.pdf">
             <span><span class="name">Declaración de Prácticas de Certificación</span>
             <span class="desc">Cómo emitimos, renovamos y revocamos certificados.</span></span>
-            <span class="meta">PDF</span></a></li>
+            <span class="meta">Descargar PDF</span></a></li>
           <li class="pending"><div class="row">
             <span><span class="name">Contrato de prestación de servicios – Tipo F3</span>
             <span class="desc">Tus derechos y obligaciones con el certificado Tipo F3.</span></span>
@@ -223,14 +252,16 @@
           <li><a href="politica-de-privacidad/POLITICA-DE-PRIVACIDAD-DOC-PP-V1.0.pdf">
             <span><span class="name">Política de Privacidad</span>
             <span class="desc">Cómo protegemos tus datos personales.</span></span>
-            <span class="meta">PDF</span></a></li>
+            <span class="meta">Descargar PDF</span></a></li>
         </ul>
       </section>
 
-      <section id="verificar">
-        <p class="eyebrow">Certificados</p>
-        <h2>Verificar un certificado</h2>
-        <p class="lead">Para comprobar que una firma es válida y que el certificado no fue revocado.</p>
+      <section class="card" id="verificar">
+        <div class="card-head">
+          <div class="card-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#4154F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
+          <h2 class="card-title">Verificar un certificado</h2>
+        </div>
+        <p class="card-text">Para comprobar que una firma es válida y que el certificado no fue revocado.</p>
         <ul class="docs">
           <li class="pending"><div class="row">
             <span><span class="name">Certificado de la AC Raíz-Py</span>
@@ -239,32 +270,21 @@
           <li><a href="https://crl.witec.id/digiyosa-ca.cer">
             <span><span class="name">Certificado de DigiYo</span>
             <span class="desc">Nuestro certificado como prestador.</span></span>
-            <span class="meta">CER</span></a></li>
+            <span class="meta">Descargar CER</span></a></li>
           <li><a href="https://crl.witec.id/digiyosa-ca.crl">
             <span><span class="name">Lista de certificados revocados (LCR)</span>
             <span class="desc">Certificados que ya no son válidos. Se actualiza con cada revocación.</span></span>
-            <span class="meta">CRL</span></a></li>
-        </ul>
-      </section>
-
-      <section id="sello">
-        <p class="eyebrow">Servicio</p>
-        <h2>Sello de tiempo</h2>
-        <p class="lead">Demuestra que un documento existía en una fecha y hora y que no cambió después.</p>
-        <ul class="docs">
-          <li class="pending"><div class="row"><span><span class="name">Certificado del sello de tiempo</span></span><span class="meta">Próximamente</span></div></li>
-          <li class="pending"><div class="row"><span><span class="name">Política y Declaración de Prácticas</span></span><span class="meta">Próximamente</span></div></li>
-          <li class="pending"><div class="row"><span><span class="name">Contrato del servicio</span></span><span class="meta">Próximamente</span></div></li>
-          <li class="pending"><div class="row"><span><span class="name">Resolución de habilitación</span></span><span class="meta">Próximamente</span></div></li>
-          <li class="pending"><div class="row"><span><span class="name">Sellos emitidos</span></span><span class="meta">Próximamente</span></div></li>
+            <span class="meta">Descargar CRL</span></a></li>
         </ul>
       </section>
     </div>
     <div class="col">
-      <section id="normativa">
-        <p class="eyebrow">Normativa</p>
-        <h2>Marco legal</h2>
-        <p class="lead">Resoluciones que nos habilitan y normas que regulan la firma electrónica en Paraguay.</p>
+      <section class="card" id="normativa">
+        <div class="card-head">
+          <div class="card-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#4154F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M5 7h14"></path><path d="M5 7l-3 6a3 3 0 0 0 6 0z"></path><path d="M19 7l-3 6a3 3 0 0 0 6 0z"></path></svg></div>
+          <h2 class="card-title">Marco legal</h2>
+        </div>
+        <p class="card-text">Resoluciones que nos habilitan y normas que regulan la firma electrónica en Paraguay.</p>
         <ul class="docs">
           <li class="pending"><div class="row">
             <span><span class="name">Resoluciones de habilitación de FirmoYo</span>
@@ -277,38 +297,40 @@
         </ul>
       </section>
 
-      <section id="ayuda">
-        <p class="eyebrow">Ayuda</p>
-        <h2>Manuales y descargas</h2>
-        <p class="lead">Guías paso a paso y programas para usar tu certificado.</p>
+      <section class="card" id="sello">
+        <div class="card-head">
+          <div class="card-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#4154F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div>
+          <h2 class="card-title">Sello de tiempo</h2>
+        </div>
+        <p class="card-text">Demuestra que un documento existía en una fecha y hora y que no cambió después.</p>
+        <ul class="docs">
+          <li class="pending"><div class="row"><span><span class="name">Certificado del sello de tiempo</span></span><span class="meta">Próximamente</span></div></li>
+          <li class="pending"><div class="row"><span><span class="name">Política y Declaración de Prácticas</span></span><span class="meta">Próximamente</span></div></li>
+          <li class="pending"><div class="row"><span><span class="name">Contrato del servicio</span></span><span class="meta">Próximamente</span></div></li>
+          <li class="pending"><div class="row"><span><span class="name">Resolución de habilitación</span></span><span class="meta">Próximamente</span></div></li>
+          <li class="pending"><div class="row"><span><span class="name">Sellos emitidos</span></span><span class="meta">Próximamente</span></div></li>
+        </ul>
+      </section>
+
+      <section class="card" id="ayuda">
+        <div class="card-head">
+          <div class="card-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#4154F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"></path><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"></path></svg></div>
+          <h2 class="card-title">Manuales y descargas</h2>
+        </div>
+        <p class="card-text">Guías paso a paso y programas para usar tu certificado.</p>
         <ul class="docs">
           <li class="pending"><div class="row"><span><span class="name">Manuales de uso</span></span><span class="meta">Próximamente</span></div></li>
         </ul>
       </section>
-
-      <section id="autoridades">
-        <p class="eyebrow">Red de confianza</p>
-        <h2>Autoridad de Registro y Validación</h2>
-        <p class="lead">Pilares de la Infraestructura de Claves Públicas del Paraguay (ICPP): la AR verifica tu identidad y aprueba tu solicitud de certificado; la AV confirma que el certificado sigue siendo válido.</p>
-        <ul class="docs">
-          <li><div class="row">
-            <span><span class="name">Autoridad de Registro: FirmoYo</span>
-            <span class="desc">Operada por DigiYo S.A. (RUC 80140723-0) · Av. Gral. José Gervasio Artigas 2025, Asunción.</span></span>
-            <a class="meta" href="https://www.witec.id/identia">identIA</a></div></li>
-          <li><div class="row">
-            <span><span class="name">Autoridad de Validación: FirmoYo</span>
-            <span class="desc">Operada por DigiYo S.A. (RUC 80140723-0) · Av. Gral. José Gervasio Artigas 2025, Asunción.</span></span>
-            <span class="meta">Propia</span></div></li>
-          <li class="pending"><div class="row">
-            <span><span class="name">Proveedores de servicios de soporte (PSS)</span>
-            <span class="desc">Empresas que nos prestan servicios técnicos vinculados.</span></span>
-            <span class="meta">Próximamente</span></div></li>
-        </ul>
-      </section>
-
     </div>
-
+  </div>
   </main>
+
+  <section class="cta">
+    <h2>¿Necesitás ayuda con tus certificados?</h2>
+    <p>Escribinos y te acompañamos en todo el proceso.</p>
+    <a href="https://www.witec.id/contacto">Contactanos</a>
+  </section>
 
   <footer>
     <div class="footer-inner">
